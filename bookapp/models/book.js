@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const bookSchema = new Schema(
   {
@@ -8,31 +8,30 @@ const bookSchema = new Schema(
     },
     description: {
       type: String,
-      default: null
+      default: null,
     },
     authors: {
       type: String,
-      default: null
+      default: null,
     },
     favorite: {
       type: Boolean,
-      default: false
+      default: false,
     },
     fileCover: {
       type: String,
-      default: null
+      default: null,
     },
     fileName: {
       type: String,
-      default: null
+      default: null,
     },
     fileBook: {
       type: String,
-      default: null
+      default: null,
     },
   },
   { versionKey: false },
 );
 
 module.exports = model('Book', bookSchema);
- 
