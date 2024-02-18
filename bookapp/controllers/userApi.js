@@ -2,11 +2,7 @@ const User = require('../models/user');
 
 // userLogin
 module.exports.userLogin = (req, res) => {
-  User.find()
-    .then((users) => res.status(200).json(users))
-    .catch((e) => {
-      console.log(e);
-    });
+  res.json(req.user);
 };
 
 // userRegister
@@ -34,24 +30,8 @@ module.exports.userRegister = async (req, res) => {
 
 // userProfile
 module.exports.userProfile = (req, res) => {
-  User.find()
-    .then((users) => res.status(200).json(users))
-    .catch((e) => {
-      console.log(e);
-    });
-};
-
-// получить пользователя по **ID**
-module.exports.getUser = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const book = await Book.findById(id).orFail();
-    res.json(book);
-  } catch (error) {
-    if (error.name === 'DocumentNotFoundError') {
-      res.status(404).json('404 | книга не найдена');
-    } else {
-      res.status(500).json(error.message);
-    }
+  if (!req.isAuthenticated()) {
+    return res.status(403).json('Нет доступа');
   }
+  return res.status(200).json(req.user);
 };
