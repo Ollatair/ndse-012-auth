@@ -96,7 +96,7 @@ module.exports.updateBook = (req, res) => {
     fileCover, fileName,
   } = req.body;
   const isFavorite = favorite === 'on' || Boolean(favorite);
-  const fileBook = req.file ? req.file.path : '';
+  const fileBook = req.file ? req.file.path : null;
   Book.findByIdAndUpdate(id, {
     title,
     description,

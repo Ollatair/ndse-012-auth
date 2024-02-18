@@ -33,6 +33,7 @@ const app = express();
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded());
+app.use(express.json());
 app.use(session({ secret: 'SECRET' }));
 
 app.use(passport.initialize());

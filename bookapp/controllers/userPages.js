@@ -72,7 +72,7 @@ module.exports.userRegister = async (req, res) => {
       await User.create({
         displayName, username, password,
       });
-      console.log(`Пользователь "${username}" спешно добавлена в базу данных`);
+      console.log(`Пользователь "${username}" успешно добавлена в базу данных`);
       return res.redirect('/user/login');
     }
     console.log(`Пользователь "${username}" уже существует в базе данных`);

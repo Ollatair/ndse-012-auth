@@ -48,15 +48,12 @@ module.exports.getBookCover = async (req, res) => {
 
 // создать книгу | создаём книгу и возвращаем её же вместе с присвоенным **ID**
 module.exports.createBook = (req, res) => {
+  console.log(req.body);
   const {
     title, description, authors, favorite,
     fileCover, fileName,
   } = req.body;
-  let fileBook = null;
-  if (req.file) {
-    const { path } = req.file;
-    fileBook = path;
-  }
+  const fileBook = req.file ? req.file.path : null;
   Book.create({
     title,
     description,

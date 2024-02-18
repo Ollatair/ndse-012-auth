@@ -2,9 +2,14 @@ const express = require('express');
 
 const router = express.Router();
 
-// router.post('/login', (req, res) => {
-//   res.status(200);
-//   res.json({ id: 1, mail: 'test@mail.ru' });
-// });
+const {
+  userLogin,
+  userRegister,
+  userProfile,
+} = require('../../controllers/userApi');
+
+router.get('/me', userProfile);
+router.post('/login', userLogin);
+router.post('/signup', userRegister);
 
 module.exports = router;
